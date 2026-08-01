@@ -118,6 +118,15 @@ body{
 .reveal{opacity:0;transform:translateY(18px);transition:all .8s cubic-bezier(.2,.9,.2,1)}
 .reveal.visible{opacity:1;transform:none}
 
+/* Rating stars */
+.rating{margin-top:1rem;display:flex;gap:.35rem;align-items:center}
+.star{font-size:20px;line-height:1;color:rgba(255,255,255,0.18);display:inline-block;position:relative}
+.star.full{color:var(--magenta);text-shadow:0 6px 18px rgba(123,46,255,0.12)}
+.star.empty{color:rgba(255,255,255,0.12)}
+.star.half{color:rgba(255,255,255,0.12)}
+.star.half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--magenta);-webkit-background-clip:text}
+
+
 /* small helpers */
 .hidden{display:none}
 
