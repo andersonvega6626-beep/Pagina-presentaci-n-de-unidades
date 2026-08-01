@@ -115,4 +115,35 @@
   window.addEventListener('resize', ()=>{ resize(); initStars(); });
   resize(); initStars(); animate();
 
+  // Photo upload & preview (drag & drop + file input)
+  const photoInput = document.getElementById('photoInput');
+  const photoPreview = document.getElementById('photoPreview');
+  const photoArea = document.getElementById('photoArea');
+  let currentObjectURL = null;
+
+  function showPreview(file){
+    if(!file || !file.type.startsWith('image/')) return;
+    if(currentObjectURL) URL.revokeObjectURL(currentObjectURL);
+    currentObjectURL = URL.createObjectURL(file);
+    photoPreview.style.backgroundImage = `url(${currentObjectURL})`;
+    photoPreview.classList.add('has-photo');
+    const txt = photoPreview.querySelector('.photo-text'); if(txt) txt.style.display='none';
+  }
+
+  if(photoInput && photoPreview && photoArea){
+    photoInput.addEventListener('change', e=>{
+      const f = e.target.files && e.target.files[0];
+      if(f) showPreview(f);
+    });
+
+    // Drag & drop
+    photoArea.addEventListener('dragover', e=>{ e.preventDefault(); photoArea.classList.add('dragover'); });
+    photoArea.addEventListener('dragleave', e=>{ photoArea.classList.remove('dragover'); });
+    photoArea.addEventListener('drop', e=>{
+      e.preventDefault(); photoArea.classList.remove('dragover');
+      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if(f) showPreview(f);
+    });
+  }
+
 })();

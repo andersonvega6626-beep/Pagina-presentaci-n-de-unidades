@@ -54,6 +54,13 @@ body{
 .hero-grid{display:grid;grid-template-columns:380px 1fr;gap:2rem;align-items:center}
 .photo-card{height:420px;display:flex;align-items:center;justify-content:center;border-radius:18px;border:1px solid var(--glass-border);background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--glow);position:relative;overflow:hidden}
 .photo-placeholder{font-weight:700;color:rgba(234,242,255,0.6);font-size:18px;border:2px dashed rgba(255,255,255,0.04);padding:2rem;border-radius:12px}
+.photo-input{display:none}
+.photo-label{display:flex;flex-direction:column;align-items:center;gap:.6rem;cursor:pointer}
+.photo-preview{width:100%;height:100%;min-height:260px;border-radius:12px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;border:2px dashed rgba(255,255,255,0.03);transition:all .28s ease}
+.photo-preview.has-photo{border:0}
+.photo-preview .photo-text{color:rgba(234,242,255,0.6);font-weight:700}
+.photo-hint{font-size:12px;color:rgba(234,242,255,0.45)}
+.photo-placeholder.dragover .photo-preview{transform:scale(1.02);box-shadow:0 10px 30px rgba(30,144,255,0.06)}
 .title{font-size:36px;margin:0}
 .glow{text-shadow:0 6px 28px rgba(30,144,255,0.06),0 0 18px rgba(123,46,255,0.06)}
 .subtitle{color:rgba(234,242,255,0.7);margin-top:.5rem}

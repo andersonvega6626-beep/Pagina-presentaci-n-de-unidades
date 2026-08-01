@@ -45,7 +45,15 @@
 		<section id="inicio" class="hero container">
 			<div class="hero-grid">
 				<div class="photo-card glass">
-					<div class="photo-placeholder">[ ESPACIO PARA MI FOTO ]</div>
+					<div class="photo-placeholder" id="photoArea">
+						<input type="file" id="photoInput" accept="image/*" class="photo-input" aria-label="Subir foto" />
+						<label for="photoInput" class="photo-label">
+							<div class="photo-preview" id="photoPreview" aria-hidden="true">
+								<span class="photo-text">[ ESPACIO PARA MI FOTO ]</span>
+							</div>
+							<div class="photo-hint">Subir foto · Arrastrar y soltar</div>
+						</label>
+					</div>
 				</div>
 
 				<div class="intro">
