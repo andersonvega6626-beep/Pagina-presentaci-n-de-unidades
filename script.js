@@ -146,4 +146,57 @@
     });
   }
 
+  // Ratings: interactividad y persistencia
+  function storageKey(unitId){ return `rating_unit_${unitId}`; }
+  function getStoredRating(unitId){ const v = localStorage.getItem(storageKey(unitId)); return v ? parseFloat(v) : null; }
+  function saveRating(unitId, rating){ localStorage.setItem(storageKey(unitId), String(rating)); }
+
+  function renderRatingElement(ratingEl, rating){
+    if(!ratingEl) return;
+    const stars = Array.from(ratingEl.querySelectorAll('.star'));
+    stars.forEach((star, idx)=>{
+      const i = idx+1;
+      star.classList.remove('full','half','empty');
+      if(rating >= i) star.classList.add('full');
+      else if(rating >= i-0.5) star.classList.add('half');
+      else star.classList.add('empty');
+    });
+    ratingEl.setAttribute('aria-label', `Valoración: ${rating} de 5`);
+  }
+
+  function initRatings(){
+    const unitCards = Array.from(document.querySelectorAll('.unit-card'));
+    unitCards.forEach(card=>{
+      const unitId = card.dataset.unit || card.id || '0';
+      const ratingEl = card.querySelector('.rating');
+      if(!ratingEl) return;
+
+      // initial rating: stored or defaults
+      const stored = getStoredRating(unitId);
+      let initial = stored !== null ? stored : (unitId === '1' || unitId === '2' ? 5 : 3.5);
+      renderRatingElement(ratingEl, initial);
+
+      // events
+      const stars = Array.from(ratingEl.querySelectorAll('.star'));
+      stars.forEach(star=>{
+        const val = parseInt(star.dataset.value,10) || 0;
+        star.addEventListener('mouseover', ()=> renderRatingElement(ratingEl, val));
+        star.addEventListener('focus', ()=> renderRatingElement(ratingEl, val));
+        star.addEventListener('click', ()=>{
+          saveRating(unitId, val);
+          renderRatingElement(ratingEl, val);
+        });
+      });
+
+      ratingEl.addEventListener('mouseleave', ()=>{
+        const v = getStoredRating(unitId);
+        const toRender = v !== null ? v : initial;
+        renderRatingElement(ratingEl, toRender);
+      });
+    });
+  }
+
+  // Inicializar ratings al final
+  initRatings();
+
 })();
