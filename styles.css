@@ -1,0 +1,117 @@
+/* styles.css
+   Tema: Galáctico / Futurista
+   Contiene diseño responsivo, glassmorphism, animaciones y efectos de glow.
+*/
+
+:root{
+  --bg:#050816; /* negro profundo */
+  --electric:#1E90FF;
+  --violet:#7B2EFF;
+  --cyan:#00E5FF;
+  --magenta:#FF00FF;
+  --white:#EAF2FF;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.06);
+  --glow: 0 6px 30px rgba(123,46,255,0.12), 0 0 30px rgba(30,144,255,0.06);
+  --container: 1200px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg, rgba(5,8,22,1) 0%, rgba(10,12,30,1) 100%);
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+.container{max-width:var(--container);margin:0 auto;padding:2rem}
+
+/* Loader */
+.loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999;transition:opacity .6s ease}
+.loader-inner{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.spinner{width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--electric),var(--violet),var(--cyan));animation:spin 1.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Starfield canvas full screen */
+.starfield{position:fixed;inset:0;z-index:0;display:block}
+
+/* Light follow and custom cursor */
+.light{position:fixed;pointer-events:none;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(0,229,255,0.18), rgba(123,46,255,0.04) 40%, transparent 60%);mix-blend-mode:screen;transform:translate(-50%,-50%);z-index:1}
+.cursor{position:fixed;width:18px;height:18px;border-radius:50%;pointer-events:none;border:2px solid rgba(255,255,255,0.12);backdrop-filter:blur(4px);transform:translate(-50%,-50%);z-index:9998;transition:transform .12s ease, background .12s ease}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(0deg, rgba(5,8,22,0.35), transparent);backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.8rem 1rem}
+.brand{font-weight:700;color:var(--white);text-decoration:none}
+.nav-links{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
+.nav-links a{color:rgba(234,242,255,0.8);text-decoration:none;padding:.35rem .6rem;border-radius:8px;transition:all .25s}
+.nav-links a:hover{background:linear-gradient(90deg, rgba(30,144,255,0.08), rgba(123,46,255,0.06));box-shadow:var(--glow)}
+.menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--white);padding:.4rem .6rem;border-radius:8px}
+
+/* Hero */
+.hero-grid{display:grid;grid-template-columns:380px 1fr;gap:2rem;align-items:center}
+.photo-card{height:420px;display:flex;align-items:center;justify-content:center;border-radius:18px;border:1px solid var(--glass-border);background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--glow);position:relative;overflow:hidden}
+.photo-placeholder{font-weight:700;color:rgba(234,242,255,0.6);font-size:18px;border:2px dashed rgba(255,255,255,0.04);padding:2rem;border-radius:12px}
+.title{font-size:36px;margin:0}
+.glow{text-shadow:0 6px 28px rgba(30,144,255,0.06),0 0 18px rgba(123,46,255,0.06)}
+.subtitle{color:rgba(234,242,255,0.7);margin-top:.5rem}
+
+.info-card{margin-top:1.2rem;padding:1.2rem;border-radius:12px}
+.info-list{list-style:none;padding:0;margin:0;display:grid;gap:.45rem}
+.info-list a{color:var(--cyan);text-decoration:none}
+
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1rem;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid transparent;cursor:pointer;transition:transform .12s ease, box-shadow .18s ease}
+.btn .icon{width:20px;height:20px}
+.whatsapp{background:linear-gradient(90deg,#00C853,#00E676);color:#04260f;box-shadow:0 6px 18px rgba(0,200,83,0.12);}
+.whatsapp:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,230,150,0.12)}
+.whatsapp:active{transform:translateY(-2px) scale(.995)}
+
+/* Units */
+.units-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem}
+.unit-card{padding:2rem;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .28s ease, box-shadow .28s ease}
+.unit-card:hover{transform:translateY(-10px);box-shadow:var(--glow)}
+.unit-card h2{margin:0 0 .6rem}
+.unit-panel{position:fixed;right:3%;top:10%;width:54%;max-width:720px;min-height:240px;padding:1.8rem;border-radius:14px;z-index:80;display:none}
+.unit-placeholder{padding:2rem;border-radius:10px;background:linear-gradient(90deg, rgba(30,144,255,0.03), rgba(123,46,255,0.02));border:1px dashed rgba(255,255,255,0.03);}
+.close-panel{position:absolute;right:14px;top:14px;background:transparent;border:0;color:var(--white);font-size:18px;cursor:pointer}
+
+/* Contact */
+.contact{padding:4rem 2rem;text-align:center}
+.author{font-weight:700}
+
+/* To top */
+.to-top{position:fixed;right:1.2rem;bottom:1.2rem;background:linear-gradient(90deg,var(--violet),var(--electric));color:var(--white);border:0;padding:.8rem 1rem;border-radius:12px;cursor:pointer;box-shadow:var(--glow);z-index:60}
+
+/* Glass utility */
+.glass{background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter: blur(8px)}
+
+/* Responsive */
+@media(max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;}
+  .photo-card{height:320px}
+  .units-grid{grid-template-columns:repeat(2,1fr)}
+  .unit-panel{width:88%;left:6%;right:6%}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .menu-toggle{display:inline-block}
+  .units-grid{grid-template-columns:1fr}
+  .container{padding:1rem}
+  .title{font-size:26px}
+  .photo-card{height:260px}
+}
+
+/* Micro interactions */
+.unit-cta{opacity:.8;color:var(--cyan)}
+.nav-links a.active{background:linear-gradient(90deg,var(--violet),var(--electric));color:#041226}
+
+/* Smooth appear reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:all .8s cubic-bezier(.2,.9,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* small helpers */
+.hidden{display:none}
+
+/* End */

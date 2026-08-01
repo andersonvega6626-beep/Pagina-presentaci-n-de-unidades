@@ -1,1 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>PORTAFOLIO PERSONAL — Anderson Jhair Vega Latacunga</title>
+	<meta name="description" content="Portafolio galáctico - Anderson Jhair Vega Latacunga" />
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<!-- Loader -->
+	<div id="loader" class="loader">
+		<div class="loader-inner">
+			<div class="spinner"></div>
+			<p>Cargando interfaz galáctica...</p>
+		</div>
+	</div>
+
+	<!-- Fondo animado: canvas para estrellas y efecto parallax -->
+	<canvas id="starfield" class="starfield"></canvas>
+
+	<!-- Efecto de partículas y brillo que sigue el cursor -->
+	<div id="light" class="light"></div>
+
+	<!-- Cursor personalizado -->
+	<div id="cursor" class="cursor"></div>
+
+	<!-- Barra de navegación -->
+	<header class="topbar">
+		<nav class="nav container">
+			<a href="#inicio" class="brand">PORTAFOLIO PERSONAL</a>
+			<ul class="nav-links">
+				<li><a href="#inicio">Inicio</a></li>
+				<li><a href="#unidad1">Unidad 1</a></li>
+				<li><a href="#unidad2">Unidad 2</a></li>
+				<li><a href="#unidad3">Unidad 3</a></li>
+				<li><a href="#contacto">Contacto</a></li>
+			</ul>
+			<button id="menuToggle" class="menu-toggle" aria-label="Abrir menú">☰</button>
+		</nav>
+	</header>
+
+	<main id="main" class="main">
+		<!-- Hero / Inicio -->
+		<section id="inicio" class="hero container">
+			<div class="hero-grid">
+				<div class="photo-card glass">
+					<div class="photo-placeholder">[ ESPACIO PARA MI FOTO ]</div>
+				</div>
+
+				<div class="intro">
+					<h1 class="title glow">PORTAFOLIO PERSONAL</h1>
+					<p class="subtitle">Bienvenido a mi sitio web personal</p>
+
+					<div class="info-card glass">
+						<h3>Información Personal</h3>
+						<ul class="info-list">
+							<li><strong>Nombre:</strong> Anderson Jhair Vega Latacunga</li>
+							<li><strong>País:</strong> Ecuador</li>
+							<li><strong>Ciudad:</strong> Latacunga</li>
+							<li><strong>Edad:</strong> 19 años</li>
+							<li><strong>Correo:</strong> <a href="mailto:andesonjhair35@gmail.com">andesonjhair35@gmail.com</a></li>
+							<li><strong>Número:</strong> <a href="tel:+593998804692">0998804692</a></li>
+						</ul>
+
+						<a id="whatsappBtn" class="btn whatsapp" href="https://wa.me/593998804692" target="_blank" rel="noopener noreferrer">
+							<svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 .002 5.373.002 12.002A11.9 11.9 0 002.29 17.98L0 24l6.375-2.275A11.939 11.939 0 0012 24c6.627 0 12-5.373 12-11.998 0-3.204-1.252-6.213-3.48-8.522zM12 22.01a9.98 9.98 0 01-5.11-1.356l-.366-.218-3.785 1.35 1.41-3.686-.236-.38A9.972 9.972 0 0112.01 2.03c5.523 0 10 4.478 10 9.972 0 5.495-4.477 9.999-10 9.999z"/></svg>
+							Contactarme por WhatsApp
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Secciones de Unidades -->
+		<section class="units container">
+			<div class="units-grid">
+				<article class="unit-card" id="unidad1" data-unit="1">
+					<h2>UNIDAD 1</h2>
+					<p class="unit-cta">Abrir</p>
+				</article>
+
+				<article class="unit-card" id="unidad2" data-unit="2">
+					<h2>UNIDAD 2</h2>
+					<p class="unit-cta">Abrir</p>
+				</article>
+
+				<article class="unit-card" id="unidad3" data-unit="3">
+					<h2>UNIDAD 3</h2>
+					<p class="unit-cta">Abrir</p>
+				</article>
+			</div>
+
+			<!-- Panel dinámico para contenido de unidad -->
+			<div id="unitPanel" class="unit-panel glass">
+				<button id="closePanel" class="close-panel">✕</button>
+				<div class="unit-content">
+					<h3 id="unitTitle">Unidad</h3>
+					<div class="unit-placeholder">Aquí podrás agregar información más adelante.</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contacto / Pie -->
+		<section id="contacto" class="contact container">
+			<h2>Contacto</h2>
+			<p>Desarrollado por</p>
+			<p class="author">Anderson Jhair Vega Latacunga — 2026</p>
+		</section>
+	</main>
+
+	<button id="toTop" class="to-top" title="Volver arriba">↑</button>
+
+	<script src="script.js" defer></script>
+</body>
+</html>
 
