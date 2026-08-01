@@ -120,11 +120,13 @@ body{
 
 /* Rating stars */
 .rating{margin-top:1rem;display:flex;gap:.35rem;align-items:center}
-.star{font-size:20px;line-height:1;color:rgba(255,255,255,0.18);display:inline-block;position:relative}
+.star{font-size:20px;line-height:1;color:rgba(255,255,255,0.18);display:inline-block;position:relative;cursor:pointer;transition:transform .12s ease}
+.star:hover{transform:translateY(-3px)}
 .star.full{color:var(--magenta);text-shadow:0 6px 18px rgba(123,46,255,0.12)}
 .star.empty{color:rgba(255,255,255,0.12)}
 .star.half{color:rgba(255,255,255,0.12)}
-.star.half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--magenta);-webkit-background-clip:text}
+.star.half::before{content:'★';position:absolute;left:0;top:0;display:block;width:50%;height:100%;overflow:hidden;color:var(--magenta)}
+.star.half, .star.full{pointer-events:auto}
 
 
 /* small helpers */
