@@ -57,12 +57,104 @@
   const unitCards = $$('.unit-card');
   const unitPanel = $('#unitPanel');
   const unitTitle = $('#unitTitle');
+  const unitBody = $('#unitBody');
   const closePanel = $('#closePanel');
+
+  const unitData = {
+    1: {
+      title: 'UNIDAD 1',
+      headline: 'Estructura y funcionamiento del computador',
+      intro: 'Descubre cómo un computador organiza sus partes y procesa la información paso a paso.',
+      topics: [
+        {
+          id: 'von',
+          title: 'Modelo de von Neumann y Harvard',
+          description: 'El modelo de von Neumann usa una misma memoria para instrucciones y datos, mientras que el modelo Harvard separa ambos para trabajar más rápido.',
+          highlights: ['Memoria compartida', 'Procesamiento secuencial', 'Rutas separadas'],
+          example: 'En un sistema von Neumann, la CPU lee la instrucción y los datos desde la misma memoria. En Harvard, puede leer instrucción y datos al mismo tiempo.'
+        },
+        {
+          id: 'so',
+          title: 'Sistemas operativos',
+          description: 'Los sistemas operativos son el “jefe” del computador: organizan programas, archivos y dispositivos.',
+          highlights: ['Gestionan recursos', 'Permiten interactuar', 'Controlan aplicaciones'],
+          example: 'Windows, Linux y Android son sistemas operativos que permiten abrir aplicaciones, guardar archivos y usar la impresora.'
+        },
+        {
+          id: 'numeracion',
+          title: 'Sistemas de numeración y conversiones',
+          description: 'Los computadores trabajan con bases como 2, 8 y 16 para representar información de forma compacta.',
+          highlights: ['Binario: base 2', 'Octal: base 8', 'Hexadecimal: base 16'],
+          example: '1011₂ = 11₁₀, 37₈ = 31₁₀ y 2F₁₆ = 47₁₀.'
+        },
+        {
+          id: 'aritmetica',
+          title: 'Aritmética binaria',
+          description: 'La suma y resta binarias siguen reglas simples, pero con acarreos cuando el resultado supera el valor de la columna.',
+          highlights: ['Suma con acarreo', 'Resta con préstamo', 'Base 2'],
+          example: '1011₂ + 0101₂ = 10000₂.'
+        },
+        {
+          id: 'bool',
+          title: 'Álgebra de Boole',
+          description: 'La lógica booleana usa valores verdaderos o falsos para tomar decisiones dentro del hardware.',
+          highlights: ['AND', 'OR', 'NOT'],
+          example: 'Si A = 1 y B = 0, entonces A AND B = 0, A OR B = 1 y NOT A = 0.'
+        }
+      ]
+    }
+  };
+
+  function renderUnitContent(id){
+    if(id === '1'){
+      const data = unitData[1];
+      unitTitle.innerHTML = `<span class="unit-label">${data.title}</span><span class="unit-headline">${data.headline}</span>`;
+      unitBody.innerHTML = `
+        <div class="unit-intro">
+          <p>${data.intro}</p>
+          <div class="topic-switcher">
+            ${data.topics.map((topic, index) => `<button class="topic-btn ${index === 0 ? 'active' : ''}" data-topic="${topic.id}">${topic.title}</button>`).join('')}
+          </div>
+        </div>
+        <div id="topicCard" class="topic-card"></div>
+      `;
+
+      const topicCard = $('#topicCard');
+      const buttons = Array.from(unitBody.querySelectorAll('.topic-btn'));
+
+      function showTopic(topicId){
+        const topic = data.topics.find(item => item.id === topicId) || data.topics[0];
+        buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.topic === topicId));
+        if(topicCard){
+          topicCard.innerHTML = `
+            <div class="topic-header">
+              <h4>${topic.title}</h4>
+              <p>${topic.description}</p>
+            </div>
+            <div class="topic-badges">
+              ${topic.highlights.map(item => `<span>${item}</span>`).join('')}
+            </div>
+            <div class="example-box">
+              <h5>Ejemplo sencillo</h5>
+              <p>${topic.example}</p>
+            </div>
+          `;
+        }
+      }
+
+      buttons.forEach(btn => btn.addEventListener('click', () => showTopic(btn.dataset.topic)));
+      showTopic(data.topics[0].id);
+      return;
+    }
+
+    unitTitle.textContent = `UNIDAD ${id}`;
+    unitBody.innerHTML = '<div class="unit-placeholder">Aquí podrás agregar información más adelante.</div>';
+  }
 
   unitCards.forEach(card=>{
     card.addEventListener('click', ()=>{
       const id = card.dataset.unit;
-      unitTitle.textContent = `UNIDAD ${id}`;
+      renderUnitContent(id);
       unitPanel.style.display = 'block';
       setTimeout(()=> unitPanel.classList.add('visible'),20);
     });
