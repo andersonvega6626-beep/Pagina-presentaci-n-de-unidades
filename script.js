@@ -127,12 +127,130 @@
           curiosity: 'La lógica booleana es la base de los circuitos digitales modernos.'
         }
       ]
+    },
+    2: {
+      title: 'UNIDAD 2',
+      headline: 'Algoritmos, diagramas de flujo y pseudocódigo',
+      intro: 'Explora cómo se plantean las soluciones paso a paso para resolver problemas mediante algoritmos claros y comprensibles.',
+      topics: [
+        {
+          id: 'algoritmos',
+          title: 'Algoritmos y sus características',
+          description: 'Un algoritmo es una secuencia ordenada de pasos que permite resolver un problema de manera lógica y efectiva.',
+          highlights: ['Secuencia', 'Precisión', 'Finito'],
+          whyItMatters: 'Permite resolver problemas de forma organizada y reproducible, tanto en programación como en la vida diaria.',
+          details: 'Los algoritmos deben ser precisos, ordenados y tener un número finito de pasos. Además, deben resolver el problema sin ambigüedades para que cualquier persona o sistema pueda ejecutarlos de la misma manera.',
+          steps: ['Inicio del problema.', 'Definición de pasos claros.', 'Ejecución hasta llegar a una solución.', 'Finalización del proceso.'],
+          examples: ['Ejemplo 1: Un algoritmo para preparar un café: calentar agua, agregar café y servir.', 'Ejemplo 2: Un algoritmo para encender una computadora: conectar cable, pulsar botón y esperar.', 'Ejemplo 3: Un algoritmo para sacar un permiso: llenar formulario, presentar documentos y esperar respuesta.', 'Ejemplo 4: Un algoritmo para sumar dos números: ingresar datos, sumarlos y mostrar resultado.', 'Ejemplo 5: Un algoritmo para encontrar un libro en una biblioteca: buscar categoría, revisar estante y tomar libro.', 'Ejemplo 6: Un algoritmo para lavar ropa: separar prendas, agregar jabón y lavar.', 'Ejemplo 7: Un algoritmo para llegar a la escuela: salir de casa, tomar transporte y llegar.', 'Ejemplo 8: Un algoritmo para abrir una puerta: insertar llave, girar y empujar.', 'Ejemplo 9: Un algoritmo para preparar una receta: medir ingredientes, mezclar y cocinar.', 'Ejemplo 10: Un algoritmo para revisar una tarea: leer instrucciones, resolver y entregar.'],
+          analogy: 'Es como una receta de cocina: si sigues cada paso en orden, obtienes el resultado esperado.',
+          curiosity: 'Los algoritmos están presentes en aplicaciones, juegos, redes y sistemas de recomendación.'
+        },
+        {
+          id: 'diagramas',
+          title: 'Los diagramas de flujo como herramienta de modelación',
+          description: 'Los diagramas de flujo representan visualmente los pasos de un algoritmo mediante símbolos estandarizados.',
+          highlights: ['Inicio/fin', 'Procesos', 'Decisiones'],
+          whyItMatters: 'Ayudan a entender mejor la lógica de un problema antes de programar, porque muestran el proceso de forma visual.',
+          details: 'Un diagrama de flujo usa formas como óvalos para inicio y fin, rectángulos para procesos, rombos para decisiones y flechas para indicar el recorrido. Esto facilita la comprensión del algoritmo.',
+          steps: ['Inicio.', 'Leer datos.', 'Tomar una decisión.', 'Ejecutar proceso.', 'Fin.'],
+          examples: ['Ejemplo 1: Un diagrama para decidir si una persona puede votar.', 'Ejemplo 2: Un diagrama para verificar si un número es par o impar.', 'Ejemplo 3: Un diagrama para calcular la suma de dos valores.', 'Ejemplo 4: Un diagrama para revisar si una contraseña es correcta.', 'Ejemplo 5: Un diagrama para elegir entre dos rutas de transporte.', 'Ejemplo 6: Un diagrama para determinar si un estudiante aprobó o no.', 'Ejemplo 7: Un diagrama para decidir si se compra o no un producto.', 'Ejemplo 8: Un diagrama para controlar el ingreso a una sala.', 'Ejemplo 9: Un diagrama para evaluar si se debe prender la luz.', 'Ejemplo 10: Un diagrama para verificar si hay stock de un producto.'],
+          analogy: 'Es como un mapa de ruta que muestra cada paso antes de iniciar el viaje.',
+          curiosity: 'Los diagramas de flujo son útiles para documentar procesos en empresas y sistemas.'
+        },
+        {
+          id: 'pseudocodigo',
+          title: 'Pseudocódigo: una herramienta de palabras útil',
+          description: 'El pseudocódigo expresa un algoritmo con palabras, frases y estructuras simples, parecidas a un lenguaje de programación.',
+          highlights: ['Lenguaje simple', 'Estructura lógica', 'Facilita la programación'],
+          whyItMatters: 'Permite traducir la solución de un problema a una forma más clara antes de escribir código real.',
+          details: 'El pseudocódigo utiliza instrucciones como Inicio, Leer, Si, Entonces, Mientras y Fin. Es una herramienta intermedia entre el lenguaje natural y un lenguaje de programación.',
+          steps: ['Inicio.', 'Leer datos.', 'Comparar información.', 'Mostrar resultado.', 'Fin.'],
+          examples: ['Ejemplo 1: Pseudocódigo para sumar dos números.', 'Ejemplo 2: Pseudocódigo para determinar si un número es positivo o negativo.', 'Ejemplo 3: Pseudocódigo para imprimir los números del 1 al 5.', 'Ejemplo 4: Pseudocódigo para verificar si una contraseña es válida.', 'Ejemplo 5: Pseudocódigo para calcular el promedio de tres notas.', 'Ejemplo 6: Pseudocódigo para hallar el mayor de dos números.', 'Ejemplo 7: Pseudocódigo para repetir una acción cinco veces.', 'Ejemplo 8: Pseudocódigo para decidir si una persona puede entrar a un evento.', 'Ejemplo 9: Pseudocódigo para convertir grados Celsius a Fahrenheit.', 'Ejemplo 10: Pseudocódigo para determinar si un año es bisiesto.'],
+          analogy: 'Es como escribir una guía paso a paso antes de construir algo complejo.',
+          curiosity: 'Muchos programadores comienzan con pseudocódigo antes de escribir código en Java, Python o C.'
+        },
+        {
+          id: 'problemas',
+          title: 'Modelo de problemas',
+          description: 'El modelo de problemas consiste en identificar la situación, analizarla y transformarla en una solución algorítmica clara.',
+          highlights: ['Análisis', 'Definición', 'Solución'],
+          whyItMatters: 'Ayuda a comprender mejor el problema y a diseñar una solución correcta y eficiente.',
+          details: 'Primero se reconoce el problema, luego se definen variables y condiciones, después se construye el algoritmo y por último se comprueba si resuelve la situación planteada.',
+          steps: ['Identificar el problema.', 'Separar los datos importantes.', 'Diseñar pasos.', 'Probar la solución.'],
+          examples: ['Ejemplo 1: Modelar el problema de calcular el promedio de notas.', 'Ejemplo 2: Resolver cómo saber si una persona cumple requisitos de edad.', 'Ejemplo 3: Determinar el costo total de varios productos.', 'Ejemplo 4: Organizar una lista de tareas por prioridad.', 'Ejemplo 5: Diseñar una solución para revisar si un número es divisible entre 2.', 'Ejemplo 6: Crear un algoritmo para encontrar el mayor de tres números.', 'Ejemplo 7: Resolver cómo calcular el área de un rectángulo.', 'Ejemplo 8: Modelar un problema de compra y descuento.', 'Ejemplo 9: Diseñar una solución para registrar ingreso de empleados.', 'Ejemplo 10: Resolver cómo clasificar personas por edad.'],
+          analogy: 'Es como desmontar un problema grande en piezas pequeñas para entenderlo mejor.',
+          curiosity: 'El pensamiento algorítmico es una habilidad esencial en ciencias, ingeniería y tecnología.'
+        }
+      ]
     }
   };
 
   function renderUnitContent(id){
     if(id === '1'){
       const data = unitData[1];
+      unitTitle.innerHTML = `<span class="unit-label">${data.title}</span><span class="unit-headline">${data.headline}</span>`;
+      unitBody.innerHTML = `
+        <div class="unit-intro">
+          <p>${data.intro}</p>
+          <div class="topic-switcher">
+            ${data.topics.map((topic, index) => `<button class="topic-btn ${index === 0 ? 'active' : ''}" data-topic="${topic.id}">${topic.title}</button>`).join('')}
+          </div>
+        </div>
+        <div id="topicCard" class="topic-card"></div>
+      `;
+
+      const topicCard = $('#topicCard');
+      const buttons = Array.from(unitBody.querySelectorAll('.topic-btn'));
+
+      function showTopic(topicId){
+        const topic = data.topics.find(item => item.id === topicId) || data.topics[0];
+        buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.topic === topicId));
+        if(topicCard){
+          topicCard.innerHTML = `
+            <div class="topic-header">
+              <h4>${topic.title}</h4>
+              <p>${topic.description}</p>
+            </div>
+            <div class="topic-badges">
+              ${topic.highlights.map(item => `<span>${item}</span>`).join('')}
+            </div>
+            <div class="topic-grid">
+              <div class="topic-block">
+                <h5>Por qué importa</h5>
+                <p>${topic.whyItMatters}</p>
+              </div>
+              <div class="topic-block">
+                <h5>Conceptos clave</h5>
+                <ul>
+                  ${topic.steps.map(step => `<li>${step}</li>`).join('')}
+                </ul>
+              </div>
+              <div class="topic-block wide">
+                <h5>Explicación detallada</h5>
+                <p>${topic.details}</p>
+              </div>
+            </div>
+            <div class="example-box">
+              <h5>Ejemplos adicionales</h5>
+              <ul>
+                ${topic.examples.map(example => `<li>${example}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="topic-foot">
+              <div class="topic-note"><strong>Analogía:</strong> ${topic.analogy}</div>
+              <div class="topic-note"><strong>Dato curioso:</strong> ${topic.curiosity}</div>
+            </div>
+          `;
+        }
+      }
+
+      buttons.forEach(btn => btn.addEventListener('click', () => showTopic(btn.dataset.topic)));
+      showTopic(data.topics[0].id);
+      return;
+    }
+
+    if(id === '2'){
+      const data = unitData[2];
       unitTitle.innerHTML = `<span class="unit-label">${data.title}</span><span class="unit-headline">${data.headline}</span>`;
       unitBody.innerHTML = `
         <div class="unit-intro">
