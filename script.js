@@ -98,7 +98,7 @@
           whyItMatters: 'Estas bases permiten representar datos digitales, direcciones de memoria y valores cromáticos en pantallas de forma organizada y precisa.',
           details: 'El sistema binario se basa en 0 y 1 porque los circuitos electrónicos pueden representarlos como estados de apagado y encendido. El octal y el hexadecimal constituyen formas más compactas de expresar números binarios largos, resultando especialmente útiles en computación y programación.',
           steps: ['1011₂ = 8 + 2 + 1 = 11₁₀.', '37₈ = 3×8 + 7 = 31₁₀.', '2F₁₆ = 2×16 + 15 = 47₁₀.'],
-          examples: ['Ejemplo 1: El número 1101₂ representa 13 en decimal.', 'Ejemplo 2: 17₈ equivale a 15₁₀.', 'Ejemplo 3: El color #FF0000 en hexadecimal indica rojo puro.'],
+          examples: ['Ejemplo 1: 1010₂ = 12₁₀ = A₁₆.', 'Ejemplo 2: 27₈ = 2×8 + 7 = 23₁₀ = 10111₂.', 'Ejemplo 3: 3F₁₆ = 3×16 + 15 = 63₁₀ = 77₈.', 'Ejemplo 4: 1001₂ = 9₁₀ = 11₈.', 'Ejemplo 5: 56₈ = 5×8 + 6 = 46₁₀ = 101110₂.', 'Ejemplo 6: 2A₁₆ = 2×16 + 10 = 42₁₀ = 52₈.', 'Ejemplo 7: 1111₂ = 15₁₀ = 17₈ = F₁₆.', 'Ejemplo 8: 34₈ = 3×8 + 4 = 28₁₀ = 11100₂.', 'Ejemplo 9: 7B₁₆ = 7×16 + 11 = 123₁₀ = 173₈.', 'Ejemplo 10: 1100₂ = 12₁₀ = 14₈ = C₁₆.'],
           analogy: 'Es como hablar el mismo mensaje en diferentes idiomas: binario, octal y hexadecimal son formas distintas de decir lo mismo.',
           curiosity: 'El hexadecimal se usa mucho en programación porque es más corto que el binario.'
         },
