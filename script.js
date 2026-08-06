@@ -72,7 +72,9 @@
           description: 'Este modelo define cómo la CPU accede a instrucciones y datos, y marca la diferencia entre sistemas más simples y sistemas más rápidos.',
           highlights: ['Memoria compartida', 'Procesamiento secuencial', 'Rutas separadas'],
           whyItMatters: 'Comprenderlo ayuda a ver por qué algunos diseños son más eficientes y por qué la arquitectura influye en el rendimiento.',
+          details: 'En el modelo de von Neumann, la CPU usa una misma ruta para obtener instrucciones y datos desde la memoria principal. En el modelo Harvard, esas rutas se separan, lo que permite leer y procesar más rápido. Por eso los sistemas embebidos y algunos procesadores modernos prefieren esta arquitectura para lograr mayor rendimiento con menos retrasos.',
           steps: ['Von Neumann: la CPU lee instrucción y datos desde la misma memoria.', 'Harvard: separa caminos para trabajar con más velocidad.', 'En muchos dispositivos pequeños, Harvard es ideal por su eficiencia.'],
+          examples: ['Ejemplo 1: Un microcontrolador que ejecuta un programa de encendido de LEDs puede usar Harvard para responder con mayor rapidez.', 'Ejemplo 2: Un ordenador personal tradicional suele usar von Neumann porque es más flexible y sencillo de implementar.', 'Ejemplo 3: En un sistema de navegación de un coche, la separación de rutas ayuda a reaccionar más rápido a los sensores.'],
           analogy: 'Es como una escuela donde un profesor recibe todo en un solo escritorio o donde cada materia tiene su propio espacio de trabajo.',
           curiosity: 'El diseño de von Neumann fue clave en los primeros computadores modernos.'
         },
@@ -82,7 +84,9 @@
           description: 'Los sistemas operativos son la capa que conecta a las personas, los programas y el hardware para que todo funcione en orden.',
           highlights: ['Gestionan recursos', 'Permiten interactuar', 'Controlan aplicaciones'],
           whyItMatters: 'Sin ellos, el usuario no podría abrir programas, guardar archivos ni usar periféricos como teclado, mouse o impresora.',
+          details: 'El sistema operativo administra la memoria RAM, organiza los procesos en la CPU, controla los archivos del disco y gestiona los dispositivos externos. Además, proporciona una interfaz para que el usuario interactúe con el equipo sin tener que programar directamente el hardware.',
           steps: ['Abres un navegador o una app.', 'El sistema asigna memoria y tiempo de CPU.', 'El programa se muestra en pantalla y puedes trabajar con él.'],
+          examples: ['Ejemplo 1: Cuando abres WhatsApp en tu celular, el sistema operativo asigna memoria y recursos para que funcione.', 'Ejemplo 2: Al imprimir un documento, el sistema envía la orden a la impresora y controla el proceso.', 'Ejemplo 3: Cuando tienes varias ventanas abiertas, el sistema reparte el tiempo de procesamiento entre ellas.'],
           analogy: 'Es como un director de orquesta que organiza a todos los músicos para que la canción salga bien.',
           curiosity: 'Linux, Windows y Android comparten la misma idea: administrar recursos y facilitar la interacción.'
         },
@@ -92,7 +96,9 @@
           description: 'Los computadores usan bases como 2, 8 y 16 para representar la información de manera compacta y eficiente.',
           highlights: ['Binario: base 2', 'Octal: base 8', 'Hexadecimal: base 16'],
           whyItMatters: 'Estas bases permiten representar datos digitales, direcciones de memoria y colores en pantallas de forma organizada.',
+          details: 'El sistema binario se basa en 0 y 1 porque los circuitos electrónicos pueden representarlos como apagado o encendido. El octal y el hexadecimal son formas más compactas de escribir números binarios largos, muy útiles en computación y programación.',
           steps: ['1011₂ = 8 + 2 + 1 = 11₁₀.', '37₈ = 3×8 + 7 = 31₁₀.', '2F₁₆ = 2×16 + 15 = 47₁₀.'],
+          examples: ['Ejemplo 1: El número 1101₂ representa 13 en decimal.', 'Ejemplo 2: 17₈ equivale a 15₁₀.', 'Ejemplo 3: El color #FF0000 en hexadecimal indica rojo puro.'],
           analogy: 'Es como hablar el mismo mensaje en diferentes idiomas: binario, octal y hexadecimal son formas distintas de decir lo mismo.',
           curiosity: 'El hexadecimal se usa mucho en programación porque es más corto que el binario.'
         },
@@ -102,7 +108,9 @@
           description: 'La suma y resta binarias sigue reglas claras, pero cuando una columna supera su valor, aparece el acarreo o el préstamo.',
           highlights: ['Suma con acarreo', 'Resta con préstamo', 'Base 2'],
           whyItMatters: 'Es la base para realizar operaciones internas en la CPU y entender cómo se procesan los datos.',
+          details: 'En binario, solo existen dos dígitos: 0 y 1. Cuando sumamos 1 + 1, se forma un acarreo y el resultado pasa a la siguiente columna. Lo mismo ocurre en la resta cuando una columna no puede prestar, y se toma una unidad de la columna anterior.',
           steps: ['1011₂ + 0101₂ = 10000₂.', 'Primero se suma 1 + 1, que genera acarreo.', 'Luego se continúa con las columnas siguientes hasta completar la operación.'],
+          examples: ['Ejemplo 1: 1100₂ + 0011₂ = 10011₂.', 'Ejemplo 2: 1010₂ - 0011₂ = 0111₂.', 'Ejemplo 3: 1001₂ + 0001₂ = 1010₂.'],
           analogy: 'Es como sumar monedas de un solo tipo: cada columna solo puede llevar un valor limitado antes de pasar al siguiente nivel.',
           curiosity: 'La CPU realiza miles de estas operaciones por segundo.'
         },
@@ -112,7 +120,9 @@
           description: 'La lógica booleana usa valores de verdad para tomar decisiones dentro del hardware y de los programas.',
           highlights: ['AND', 'OR', 'NOT'],
           whyItMatters: 'Permite construir circuitos, filtros lógicos y condiciones de decisión en software y electrónica.',
+          details: 'La lógica booleana trabaja con dos estados: verdadero y falso, representados como 1 y 0. Estas operaciones son la base de los compuertas lógicas que forman los circuitos digitales y permiten tomar decisiones en los sistemas electrónicos.',
           steps: ['Si A = 1 y B = 0, entonces A AND B = 0.', 'A OR B = 1.', 'NOT A = 0 y A XOR B = 1.'],
+          examples: ['Ejemplo 1: Si una puerta está abierta y el sensor detecta movimiento, la alarma se activa.', 'Ejemplo 2: En un sistema de seguridad, AND exige que se cumplan dos condiciones al mismo tiempo.', 'Ejemplo 3: Con NOT, si una condición era verdadera, ahora se invierte a falsa.'],
           analogy: 'Es como un sistema de reglas simples que decide si algo se activa o no.',
           curiosity: 'La lógica booleana es la base de los circuitos digitales modernos.'
         }
@@ -160,10 +170,16 @@
                   ${topic.steps.map(step => `<li>${step}</li>`).join('')}
                 </ul>
               </div>
+              <div class="topic-block wide">
+                <h5>Explicación detallada</h5>
+                <p>${topic.details}</p>
+              </div>
             </div>
             <div class="example-box">
-              <h5>Ejemplo práctico</h5>
-              <p>${topic.steps[0]}</p>
+              <h5>Ejemplos adicionales</h5>
+              <ul>
+                ${topic.examples.map(example => `<li>${example}</li>`).join('')}
+              </ul>
             </div>
             <div class="topic-foot">
               <div class="topic-note"><strong>Analogía:</strong> ${topic.analogy}</div>
