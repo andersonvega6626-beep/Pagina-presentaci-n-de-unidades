@@ -69,37 +69,52 @@
         {
           id: 'von',
           title: 'Modelo de von Neumann y Harvard',
-          description: 'El modelo de von Neumann usa una misma memoria para instrucciones y datos, mientras que el modelo Harvard separa ambos para trabajar más rápido.',
+          description: 'Este modelo define cómo la CPU accede a instrucciones y datos, y marca la diferencia entre sistemas más simples y sistemas más rápidos.',
           highlights: ['Memoria compartida', 'Procesamiento secuencial', 'Rutas separadas'],
-          example: 'En un sistema von Neumann, la CPU lee la instrucción y los datos desde la misma memoria. En Harvard, puede leer instrucción y datos al mismo tiempo.'
+          whyItMatters: 'Comprenderlo ayuda a ver por qué algunos diseños son más eficientes y por qué la arquitectura influye en el rendimiento.',
+          steps: ['Von Neumann: la CPU lee instrucción y datos desde la misma memoria.', 'Harvard: separa caminos para trabajar con más velocidad.', 'En muchos dispositivos pequeños, Harvard es ideal por su eficiencia.'],
+          analogy: 'Es como una escuela donde un profesor recibe todo en un solo escritorio o donde cada materia tiene su propio espacio de trabajo.',
+          curiosity: 'El diseño de von Neumann fue clave en los primeros computadores modernos.'
         },
         {
           id: 'so',
           title: 'Sistemas operativos',
-          description: 'Los sistemas operativos son el “jefe” del computador: organizan programas, archivos y dispositivos.',
+          description: 'Los sistemas operativos son la capa que conecta a las personas, los programas y el hardware para que todo funcione en orden.',
           highlights: ['Gestionan recursos', 'Permiten interactuar', 'Controlan aplicaciones'],
-          example: 'Windows, Linux y Android son sistemas operativos que permiten abrir aplicaciones, guardar archivos y usar la impresora.'
+          whyItMatters: 'Sin ellos, el usuario no podría abrir programas, guardar archivos ni usar periféricos como teclado, mouse o impresora.',
+          steps: ['Abres un navegador o una app.', 'El sistema asigna memoria y tiempo de CPU.', 'El programa se muestra en pantalla y puedes trabajar con él.'],
+          analogy: 'Es como un director de orquesta que organiza a todos los músicos para que la canción salga bien.',
+          curiosity: 'Linux, Windows y Android comparten la misma idea: administrar recursos y facilitar la interacción.'
         },
         {
           id: 'numeracion',
           title: 'Sistemas de numeración y conversiones',
-          description: 'Los computadores trabajan con bases como 2, 8 y 16 para representar información de forma compacta.',
+          description: 'Los computadores usan bases como 2, 8 y 16 para representar la información de manera compacta y eficiente.',
           highlights: ['Binario: base 2', 'Octal: base 8', 'Hexadecimal: base 16'],
-          example: '1011₂ = 11₁₀, 37₈ = 31₁₀ y 2F₁₆ = 47₁₀.'
+          whyItMatters: 'Estas bases permiten representar datos digitales, direcciones de memoria y colores en pantallas de forma organizada.',
+          steps: ['1011₂ = 8 + 2 + 1 = 11₁₀.', '37₈ = 3×8 + 7 = 31₁₀.', '2F₁₆ = 2×16 + 15 = 47₁₀.'],
+          analogy: 'Es como hablar el mismo mensaje en diferentes idiomas: binario, octal y hexadecimal son formas distintas de decir lo mismo.',
+          curiosity: 'El hexadecimal se usa mucho en programación porque es más corto que el binario.'
         },
         {
           id: 'aritmetica',
           title: 'Aritmética binaria',
-          description: 'La suma y resta binarias siguen reglas simples, pero con acarreos cuando el resultado supera el valor de la columna.',
+          description: 'La suma y resta binarias sigue reglas claras, pero cuando una columna supera su valor, aparece el acarreo o el préstamo.',
           highlights: ['Suma con acarreo', 'Resta con préstamo', 'Base 2'],
-          example: '1011₂ + 0101₂ = 10000₂.'
+          whyItMatters: 'Es la base para realizar operaciones internas en la CPU y entender cómo se procesan los datos.',
+          steps: ['1011₂ + 0101₂ = 10000₂.', 'Primero se suma 1 + 1, que genera acarreo.', 'Luego se continúa con las columnas siguientes hasta completar la operación.'],
+          analogy: 'Es como sumar monedas de un solo tipo: cada columna solo puede llevar un valor limitado antes de pasar al siguiente nivel.',
+          curiosity: 'La CPU realiza miles de estas operaciones por segundo.'
         },
         {
           id: 'bool',
           title: 'Álgebra de Boole',
-          description: 'La lógica booleana usa valores verdaderos o falsos para tomar decisiones dentro del hardware.',
+          description: 'La lógica booleana usa valores de verdad para tomar decisiones dentro del hardware y de los programas.',
           highlights: ['AND', 'OR', 'NOT'],
-          example: 'Si A = 1 y B = 0, entonces A AND B = 0, A OR B = 1 y NOT A = 0.'
+          whyItMatters: 'Permite construir circuitos, filtros lógicos y condiciones de decisión en software y electrónica.',
+          steps: ['Si A = 1 y B = 0, entonces A AND B = 0.', 'A OR B = 1.', 'NOT A = 0 y A XOR B = 1.'],
+          analogy: 'Es como un sistema de reglas simples que decide si algo se activa o no.',
+          curiosity: 'La lógica booleana es la base de los circuitos digitales modernos.'
         }
       ]
     }
@@ -134,9 +149,25 @@
             <div class="topic-badges">
               ${topic.highlights.map(item => `<span>${item}</span>`).join('')}
             </div>
+            <div class="topic-grid">
+              <div class="topic-block">
+                <h5>Por qué importa</h5>
+                <p>${topic.whyItMatters}</p>
+              </div>
+              <div class="topic-block">
+                <h5>Conceptos clave</h5>
+                <ul>
+                  ${topic.steps.map(step => `<li>${step}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
             <div class="example-box">
-              <h5>Ejemplo sencillo</h5>
-              <p>${topic.example}</p>
+              <h5>Ejemplo práctico</h5>
+              <p>${topic.steps[0]}</p>
+            </div>
+            <div class="topic-foot">
+              <div class="topic-note"><strong>Analogía:</strong> ${topic.analogy}</div>
+              <div class="topic-note"><strong>Dato curioso:</strong> ${topic.curiosity}</div>
             </div>
           `;
         }
