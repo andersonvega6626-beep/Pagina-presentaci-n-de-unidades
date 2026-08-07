@@ -1,5 +1,5 @@
 /* script.js
-   Lógica para: loader, starfield, cursor, panel de unidades, scroll suave y efectos.
+   Lógica para: starfield, cursor, panel de unidades, scroll suave, perfil y efectos.
 */
 (function(){
   'use strict';
@@ -7,7 +7,6 @@
   // Helper: seleccionar
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
-  const loader = $('#loader');
 
   // Smooth scroll for nav links
   const navLinks = $$('.nav-links a');
@@ -534,20 +533,6 @@
     });
   }
 
-  // Hide loader once page finishes loading
-  if(loader){
-    const hideLoader = ()=>{
-      loader.style.opacity = '0';
-      setTimeout(()=>{ loader.style.display = 'none'; }, 600);
-    };
-
-    window.addEventListener('load', hideLoader);
-    window.addEventListener('DOMContentLoaded', ()=> setTimeout(hideLoader, 120));
-    setTimeout(()=>{
-      if(loader.style.display !== 'none') hideLoader();
-    }, 5000);
-  }
-
   // Simple starfield canvas
   const canvas = document.getElementById('starfield');
   const ctx = canvas && canvas.getContext && canvas.getContext('2d');
@@ -574,22 +559,6 @@
   function animate(){ drawStars(); requestAnimationFrame(animate); }
   window.addEventListener('resize', ()=>{ resize(); initStars(); });
   resize(); initStars(); animate();
-
-  // Photo preview setup (fixed profile image only)
-  const photoPreview = document.getElementById('photoPreview');
-  if(photoPreview){
-    const profileFiles = ['profile.jpg', 'profile.png', 'foto.jpg', 'foto.png', 'photo.jpg', 'photo.png'];
-    profileFiles.forEach(src => {
-      const image = new Image();
-      image.src = src;
-      image.addEventListener('load', ()=>{
-        photoPreview.style.backgroundImage = `url('${src}')`;
-        photoPreview.classList.add('has-photo','has-profile');
-        const txt = photoPreview.querySelector('.photo-text');
-        if(txt) txt.style.display = 'none';
-      });
-    });
-  }
 
   // Ratings: static values only
   function renderRatingElement(ratingEl, rating){
