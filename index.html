@@ -48,6 +48,17 @@
 		<section id="inicio" class="hero container">
 			<div class="hero-grid">
 				<div class="photo-card glass">
+					<div class="hero-robot" aria-hidden="true">
+						<div class="robot-head">
+							<span class="robot-eye"></span>
+							<span class="robot-eye"></span>
+							<span class="robot-antenna"></span>
+						</div>
+						<div class="robot-body">
+							<span class="robot-chest"></span>
+						</div>
+						<div class="robot-legs"></div>
+					</div>
 					<div class="photo-placeholder" id="photoArea">
 						<input type="file" id="photoInput" accept="image/*" class="photo-input" aria-label="Subir foto" />
 						<label for="photoInput" class="photo-label">
@@ -126,6 +137,7 @@
 
 			<!-- Panel dinámico para contenido de unidad -->
 			<div id="unitPanel" class="unit-panel glass">
+				<div class="portal-ring" aria-hidden="true"></div>
 				<button id="closePanel" class="close-panel">✕</button>
 				<div class="unit-content">
 					<h3 id="unitTitle">Unidad</h3>

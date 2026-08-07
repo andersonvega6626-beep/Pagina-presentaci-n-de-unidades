@@ -18,13 +18,39 @@
   });
 
   // Smooth scroll for nav links
-  $$('.nav-links a').forEach(a=>{
+  const navLinks = $$('.nav-links a');
+  function openUnitPanel(unitId){
+    const id = String(unitId).replace('#','');
+    renderUnitContent(id);
+    unitPanel.style.display = 'block';
+    requestAnimationFrame(()=> unitPanel.classList.add('visible'));
+    const unitsSection = document.querySelector('.units');
+    if(unitsSection) unitsSection.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  navLinks.forEach(a=>{
     a.addEventListener('click', e=>{
-      e.preventDefault();
       const href = a.getAttribute('href');
+      if(href === '#unidad1' || href === '#unidad2' || href === '#unidad3'){
+        e.preventDefault();
+        openUnitPanel(href.replace('#',''));
+        return;
+      }
+      if(href === '#contacto'){
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if(target){
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+          target.classList.remove('contact-highlight');
+          void target.offsetWidth;
+          target.classList.add('contact-highlight');
+          setTimeout(()=> target.classList.remove('contact-highlight'), 1800);
+        }
+        return;
+      }
+      e.preventDefault();
       const target = document.querySelector(href);
       if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
-      // mobile menu close if needed
     });
   });
 
@@ -460,15 +486,16 @@
 
   unitCards.forEach(card=>{
     card.addEventListener('click', ()=>{
-      const id = card.dataset.unit;
-      renderUnitContent(id);
-      unitPanel.style.display = 'block';
-      setTimeout(()=> unitPanel.classList.add('visible'),20);
+      openUnitPanel(card.dataset.unit);
     });
   });
   closePanel.addEventListener('click', ()=>{
     unitPanel.classList.remove('visible');
-    setTimeout(()=> unitPanel.style.display='none',300);
+    unitPanel.classList.add('closing');
+    setTimeout(()=>{
+      unitPanel.classList.remove('closing');
+      unitPanel.style.display='none';
+    },360);
   });
 
   // Reveal elements on scroll
