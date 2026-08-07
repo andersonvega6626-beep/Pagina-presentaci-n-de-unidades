@@ -66,12 +66,18 @@
 
   const photoInput = document.getElementById('photoInput');
   const photoPreview = document.getElementById('photoPreview');
-  const photoLabel = document.querySelector('.photo-label');
+  const photoImage = document.getElementById('photoImage');
+  const photoButton = document.getElementById('photoButton');
+  const photoPlaceholder = document.querySelector('.photo-placeholder');
 
   function updatePhotoPreview(file){
     if(!file || !photoPreview) return;
     const reader = new FileReader();
     reader.onload = ()=>{
+      if(photoImage){
+        photoImage.src = reader.result;
+        photoImage.classList.remove('hidden');
+      }
       photoPreview.style.backgroundImage = `url('${reader.result}')`;
       photoPreview.classList.add('has-photo','has-profile');
       const txt = photoPreview.querySelector('.photo-text');
@@ -80,38 +86,59 @@
     reader.readAsDataURL(file);
   }
 
-  if(photoInput && photoLabel){
+  if(photoInput){
     photoInput.addEventListener('change', e=>{
       const file = e.target.files && e.target.files[0];
-      if(file) updatePhotoPreview(file);
-    });
-
-    ['dragenter','dragover'].forEach(eventName => {
-      photoLabel.addEventListener(eventName, e=>{
-        e.preventDefault();
-        e.stopPropagation();
-        photoLabel.classList.add('dragover');
-      });
-    });
-
-    ['dragleave','drop'].forEach(eventName => {
-      photoLabel.addEventListener(eventName, e=>{
-        e.preventDefault();
-        e.stopPropagation();
-        photoLabel.classList.remove('dragover');
-      });
-    });
-
-    photoLabel.addEventListener('drop', e=>{
-      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-      if(file){
+      if(file && file.type.startsWith('image/')) {
         updatePhotoPreview(file);
-        photoInput.files = e.dataTransfer.files;
       }
     });
   }
 
-  const interactiveElements = Array.from(document.querySelectorAll('a, button, .unit-card, .topic-btn, .btn, .photo-label'));
+  if(photoButton && photoInput){
+    photoButton.addEventListener('click', e=>{
+      e.preventDefault();
+      photoInput.click();
+    });
+  }
+
+  if(photoPreview && photoInput){
+    photoPreview.addEventListener('click', ()=> photoInput.click());
+  }
+
+  if(photoPlaceholder && photoInput){
+    photoPlaceholder.addEventListener('click', e=>{
+      if(e.target === photoInput) return;
+      photoInput.click();
+    });
+  }
+
+  if(photoPlaceholder){
+    ['dragenter','dragover'].forEach(eventName => {
+      photoPlaceholder.addEventListener(eventName, e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        photoPlaceholder.classList.add('dragover');
+      });
+    });
+
+    ['dragleave','drop'].forEach(eventName => {
+      photoPlaceholder.addEventListener(eventName, e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        photoPlaceholder.classList.remove('dragover');
+      });
+    });
+
+    photoPlaceholder.addEventListener('drop', e=>{
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if(file){
+        updatePhotoPreview(file);
+      }
+    });
+  }
+
+  const interactiveElements = Array.from(document.querySelectorAll('a, button, .unit-card, .topic-btn, .btn, .photo-preview'));
   interactiveElements.forEach(el=>{
     el.addEventListener('mouseenter', ()=> cursor && cursor.classList.add('active'));
     el.addEventListener('mouseleave', ()=> cursor && cursor.classList.remove('active'));
