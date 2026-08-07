@@ -7,6 +7,7 @@
   // Helper: seleccionar
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
+  const loader = $('#loader');
 
   // Smooth scroll for nav links
   const navLinks = $$('.nav-links a');
@@ -498,11 +499,25 @@
 
   // Mobile menu toggle
   const menuToggle = $('#menuToggle');
-  const navLinks = $('.nav-links');
-  if(menuToggle){
+  const navLinksContainer = $('.nav-links');
+  if(menuToggle && navLinksContainer){
     menuToggle.addEventListener('click', ()=>{
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      navLinksContainer.style.display = navLinksContainer.style.display === 'flex' ? 'none' : 'flex';
     });
+  }
+
+  // Hide loader once page finishes loading
+  if(loader){
+    const hideLoader = ()=>{
+      loader.style.opacity = '0';
+      setTimeout(()=>{ loader.style.display = 'none'; }, 600);
+    };
+
+    window.addEventListener('load', hideLoader);
+    window.addEventListener('DOMContentLoaded', ()=> setTimeout(hideLoader, 120));
+    setTimeout(()=>{
+      if(loader.style.display !== 'none') hideLoader();
+    }, 5000);
   }
 
   // Simple starfield canvas

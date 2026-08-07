@@ -53,6 +53,7 @@ body::after{
 /* Loader */
 .loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at top, rgba(0,229,255,0.16), rgba(5,8,22,1));z-index:9999;transition:opacity .6s ease}
 .loader-inner{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.loader-text{color:var(--white);font-size:0.95rem;letter-spacing:0.09em;text-transform:uppercase;opacity:0.88;margin:0;}
 .spinner{width:72px;height:72px;border-radius:50%;background:conic-gradient(from 0deg, var(--electric), var(--violet), var(--yellow), var(--cyan), var(--electric));animation:spin 1.6s linear infinite;box-shadow:0 0 30px rgba(0,229,255,0.24)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes drift{from{transform:translate3d(-2%, -2%, 0) scale(1)} to{transform:translate3d(3%, 2%, 0) scale(1.06)}}
