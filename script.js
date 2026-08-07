@@ -8,6 +8,8 @@
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   const loader = $('#loader');
+  const heroBot = $('#astroBot');
+  const panelBot = $('#panelBot');
 
   // Smooth scroll for nav links
   const navLinks = $$('.nav-links a');
@@ -16,6 +18,12 @@
     renderUnitContent(id);
     unitPanel.style.display = 'block';
     requestAnimationFrame(()=> unitPanel.classList.add('visible'));
+    if(panelBot){
+      panelBot.classList.remove('close-gesture');
+      panelBot.classList.add('visible','open-gesture');
+      const bubble = panelBot.querySelector('.panel-bubble');
+      if(bubble) bubble.textContent = '¡Abriendo datos!';
+    }
     const unitsSection = document.querySelector('.units');
     if(unitsSection) unitsSection.scrollIntoView({behavior:'smooth', block:'start'});
   }
@@ -57,11 +65,26 @@
   const cursor = $('#cursor');
   const light = $('#light');
   document.addEventListener('mousemove', e=>{
-    cursor.style.left = e.clientX+'px';
-    cursor.style.top = e.clientY+'px';
-    light.style.left = e.clientX+'px';
-    light.style.top = e.clientY+'px';
+    if(cursor){
+      cursor.style.left = e.clientX+'px';
+      cursor.style.top = e.clientY+'px';
+    }
+    if(light){
+      light.style.left = e.clientX+'px';
+      light.style.top = e.clientY+'px';
+    }
   });
+
+  const interactiveElements = Array.from(document.querySelectorAll('a, button, .unit-card, .topic-btn, .btn, .photo-label'));
+  interactiveElements.forEach(el=>{
+    el.addEventListener('mouseenter', ()=> cursor && cursor.classList.add('active'));
+    el.addEventListener('mouseleave', ()=> cursor && cursor.classList.remove('active'));
+    el.addEventListener('mousedown', ()=> cursor && cursor.classList.add('press'));
+    el.addEventListener('mouseup', ()=> cursor && cursor.classList.remove('press'));
+  });
+
+  document.addEventListener('mousedown', ()=> cursor && cursor.classList.add('press'));
+  document.addEventListener('mouseup', ()=> cursor && cursor.classList.remove('press'));
 
   // Whatsapp button bounce effect
   const wa = $('#whatsappBtn');
@@ -482,6 +505,13 @@
     });
   });
   closePanel.addEventListener('click', ()=>{
+    if(panelBot){
+      panelBot.classList.remove('open-gesture');
+      panelBot.classList.add('close-gesture');
+      const bubble = panelBot.querySelector('.panel-bubble');
+      if(bubble) bubble.textContent = '¡Hasta pronto!';
+      setTimeout(()=> panelBot.classList.remove('visible'), 420);
+    }
     unitPanel.classList.remove('visible');
     unitPanel.classList.add('closing');
     setTimeout(()=>{
@@ -575,6 +605,15 @@
       e.preventDefault(); photoArea.classList.remove('dragover');
       const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
       if(f) showPreview(f);
+    });
+
+    const defaultProfile = new Image();
+    defaultProfile.src = 'profile.jpg';
+    defaultProfile.addEventListener('load', ()=>{
+      photoPreview.style.backgroundImage = `url('${defaultProfile.src}')`;
+      photoPreview.classList.add('has-photo','has-profile');
+      const txt = photoPreview.querySelector('.photo-text');
+      if(txt) txt.style.display = 'none';
     });
   }
 
