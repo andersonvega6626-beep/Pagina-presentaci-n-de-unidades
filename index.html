@@ -52,9 +52,13 @@
 						<div class="robot-legs"></div>
 					</div>
 					<div class="photo-placeholder photo-static">
-						<div class="photo-preview has-profile" id="photoPreview" aria-hidden="true">
-							<span class="photo-text">[ FOTO DE PERFIL ]</span>
-						</div>
+						<label class="photo-label" for="photoInput">
+							<input type="file" accept="image/*" id="photoInput" class="photo-input" aria-label="Subir foto de perfil" />
+							<div class="photo-preview" id="photoPreview" aria-hidden="true">
+								<span class="photo-text">[ HAGA CLIC O ARRASTRE UNA IMAGEN ]</span>
+							</div>
+							<p class="photo-hint">Sube cualquier imagen para usar como foto de perfil.</p>
+						</label>
 					</div>
 				</div>
 
@@ -127,3 +131,27 @@
 			</div>
 
 				<div id="unitPanel" class="unit-panel glass">
+					<div class="portal-ring" aria-hidden="true"></div>
+					<button id="closePanel" class="close-panel">✕</button>
+					<div class="unit-content">
+						<h3 id="unitTitle">Unidad</h3>
+						<div id="unitBody" class="unit-body">
+							<div class="unit-placeholder">Aquí podrás agregar información más adelante.</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contacto / Pie -->
+			<section id="contacto" class="contact container">
+				<h2>Contacto</h2>
+				<p>Desarrollado por</p>
+				<p class="author">Anderson Jhair Vega Latacunga — 2026</p>
+			</section>
+		</main>
+
+		<button id="toTop" class="to-top" title="Volver arriba">↑</button>
+
+		<script src="script.js" defer></script>
+	</body>
+</html>

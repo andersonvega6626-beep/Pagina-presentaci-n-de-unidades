@@ -38,16 +38,8 @@
         const target = document.querySelector(href);
         if(target){
           target.scrollIntoView({behavior:'smooth',block:'start'});
-          target.classList.remove('contact-highlight');
-          void target.offsetWidth;
-          target.classList.add('contact-highlight');
-          setTimeout(()=> target.classList.remove('contact-highlight'), 1800);
         }
-        return;
       }
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
     });
   });
 
@@ -71,6 +63,53 @@
       light.style.top = e.clientY+'px';
     }
   });
+
+  const photoInput = document.getElementById('photoInput');
+  const photoPreview = document.getElementById('photoPreview');
+  const photoLabel = document.querySelector('.photo-label');
+
+  function updatePhotoPreview(file){
+    if(!file || !photoPreview) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      photoPreview.style.backgroundImage = `url('${reader.result}')`;
+      photoPreview.classList.add('has-photo','has-profile');
+      const txt = photoPreview.querySelector('.photo-text');
+      if(txt) txt.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  if(photoInput && photoLabel){
+    photoInput.addEventListener('change', e=>{
+      const file = e.target.files && e.target.files[0];
+      if(file) updatePhotoPreview(file);
+    });
+
+    ['dragenter','dragover'].forEach(eventName => {
+      photoLabel.addEventListener(eventName, e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        photoLabel.classList.add('dragover');
+      });
+    });
+
+    ['dragleave','drop'].forEach(eventName => {
+      photoLabel.addEventListener(eventName, e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        photoLabel.classList.remove('dragover');
+      });
+    });
+
+    photoLabel.addEventListener('drop', e=>{
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if(file){
+        updatePhotoPreview(file);
+        photoInput.files = e.dataTransfer.files;
+      }
+    });
+  }
 
   const interactiveElements = Array.from(document.querySelectorAll('a, button, .unit-card, .topic-btn, .btn, .photo-label'));
   interactiveElements.forEach(el=>{
@@ -97,6 +136,7 @@
   const unitTitle = $('#unitTitle');
   const unitBody = $('#unitBody');
   const closePanel = $('#closePanel');
+  const panelBot = $('#panelBot');
 
   const unitData = {
     1: {
