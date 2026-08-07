@@ -8,8 +8,6 @@
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
   const loader = $('#loader');
-  const heroBot = $('#astroBot');
-  const panelBot = $('#panelBot');
 
   // Smooth scroll for nav links
   const navLinks = $$('.nav-links a');
@@ -577,51 +575,23 @@
   window.addEventListener('resize', ()=>{ resize(); initStars(); });
   resize(); initStars(); animate();
 
-  // Photo upload & preview (drag & drop + file input)
-  const photoInput = document.getElementById('photoInput');
+  // Photo preview setup (fixed profile image only)
   const photoPreview = document.getElementById('photoPreview');
-  const photoArea = document.getElementById('photoArea');
-  let currentObjectURL = null;
-
-  function showPreview(file){
-    if(!file || !file.type.startsWith('image/')) return;
-    if(currentObjectURL) URL.revokeObjectURL(currentObjectURL);
-    currentObjectURL = URL.createObjectURL(file);
-    photoPreview.style.backgroundImage = `url(${currentObjectURL})`;
-    photoPreview.classList.add('has-photo');
-    const txt = photoPreview.querySelector('.photo-text'); if(txt) txt.style.display='none';
-  }
-
-  if(photoInput && photoPreview && photoArea){
-    photoInput.addEventListener('change', e=>{
-      const f = e.target.files && e.target.files[0];
-      if(f) showPreview(f);
-    });
-
-    // Drag & drop
-    photoArea.addEventListener('dragover', e=>{ e.preventDefault(); photoArea.classList.add('dragover'); });
-    photoArea.addEventListener('dragleave', e=>{ photoArea.classList.remove('dragover'); });
-    photoArea.addEventListener('drop', e=>{
-      e.preventDefault(); photoArea.classList.remove('dragover');
-      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-      if(f) showPreview(f);
-    });
-
-    const defaultProfile = new Image();
-    defaultProfile.src = 'profile.jpg';
-    defaultProfile.addEventListener('load', ()=>{
-      photoPreview.style.backgroundImage = `url('${defaultProfile.src}')`;
-      photoPreview.classList.add('has-photo','has-profile');
-      const txt = photoPreview.querySelector('.photo-text');
-      if(txt) txt.style.display = 'none';
+  if(photoPreview){
+    const profileFiles = ['profile.jpg', 'profile.png', 'foto.jpg', 'foto.png', 'photo.jpg', 'photo.png'];
+    profileFiles.forEach(src => {
+      const image = new Image();
+      image.src = src;
+      image.addEventListener('load', ()=>{
+        photoPreview.style.backgroundImage = `url('${src}')`;
+        photoPreview.classList.add('has-photo','has-profile');
+        const txt = photoPreview.querySelector('.photo-text');
+        if(txt) txt.style.display = 'none';
+      });
     });
   }
 
-  // Ratings: interactividad y persistencia
-  function storageKey(unitId){ return `rating_unit_${unitId}`; }
-  function getStoredRating(unitId){ const v = localStorage.getItem(storageKey(unitId)); return v ? parseFloat(v) : null; }
-  function saveRating(unitId, rating){ localStorage.setItem(storageKey(unitId), String(rating)); }
-
+  // Ratings: static values only
   function renderRatingElement(ratingEl, rating){
     if(!ratingEl) return;
     const stars = Array.from(ratingEl.querySelectorAll('.star'));
@@ -636,38 +606,14 @@
   }
 
   function initRatings(){
-    const unitCards = Array.from(document.querySelectorAll('.unit-card'));
-    unitCards.forEach(card=>{
-      const unitId = card.dataset.unit || card.id || '0';
-      const ratingEl = card.querySelector('.rating');
-      if(!ratingEl) return;
-
-      // initial rating: stored or defaults
-      const stored = getStoredRating(unitId);
-      let initial = stored !== null ? stored : (unitId === '1' || unitId === '2' ? 5 : 3.5);
-      renderRatingElement(ratingEl, initial);
-
-      // events
-      const stars = Array.from(ratingEl.querySelectorAll('.star'));
-      stars.forEach(star=>{
-        const val = parseInt(star.dataset.value,10) || 0;
-        star.addEventListener('mouseover', ()=> renderRatingElement(ratingEl, val));
-        star.addEventListener('focus', ()=> renderRatingElement(ratingEl, val));
-        star.addEventListener('click', ()=>{
-          saveRating(unitId, val);
-          renderRatingElement(ratingEl, val);
-        });
-      });
-
-      ratingEl.addEventListener('mouseleave', ()=>{
-        const v = getStoredRating(unitId);
-        const toRender = v !== null ? v : initial;
-        renderRatingElement(ratingEl, toRender);
-      });
+    const ratings = Array.from(document.querySelectorAll('.rating'));
+    ratings.forEach(ratingEl => {
+      const card = ratingEl.closest('.unit-card');
+      const rating = card && card.id === 'unidad3' ? 3.5 : 5;
+      renderRatingElement(ratingEl, rating);
     });
   }
 
-  // Inicializar ratings al final
   initRatings();
 
 })();

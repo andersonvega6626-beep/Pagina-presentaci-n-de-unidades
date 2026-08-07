@@ -46,17 +46,6 @@
 		<!-- Hero / Inicio -->
 		<section id="inicio" class="hero container">
 			<div class="hero-grid">
-				<div id="astroBot" class="astro-bot">
-					<div class="bot-head">
-						<span class="antenna"></span>
-						<span class="eye left"></span>
-						<span class="eye right"></span>
-					</div>
-					<div class="bot-body"></div>
-					<div class="bot-arm left"></div>
-					<div class="bot-arm right"></div>
-					<div class="bot-text">Astro te saluda</div>
-				</div>
 				<div class="photo-card glass">
 					<div class="hero-robot" aria-hidden="true">
 						<div class="robot-head">
@@ -69,21 +58,17 @@
 						</div>
 						<div class="robot-legs"></div>
 					</div>
-					<div class="photo-placeholder" id="photoArea">
-						<input type="file" id="photoInput" accept="image/*" class="photo-input" aria-label="Subir foto" />
-						<label for="photoInput" class="photo-label">
-							<div class="photo-preview" id="photoPreview" aria-hidden="true">
-								<span class="photo-text">[ ESPACIO PARA MI FOTO ]</span>
-							</div>
-							<div class="photo-hint">Subir foto · Arrastrar y soltar</div>
-						</label>
+					<div class="photo-placeholder photo-static">
+						<div class="photo-preview has-profile" id="photoPreview" aria-hidden="true">
+							<span class="photo-text">[ FOTO DE PERFIL ]</span>
+						</div>
 					</div>
 				</div>
 
 				<div class="intro">
 					<h1 class="title glow">PORTAFOLIO PERSONAL</h1>
-					<p class="subtitle">Explora mi universo digital con energía de robot, estrellas y creatividad.</p>
-					<div class="hero-badge">Astro Bot • Universo digital</div>
+					<p class="subtitle">Explora mi universo digital con creatividad, estilo y tecnología.</p>
+					<div class="hero-badge">Universo digital • Portafolio</div>
 
 					<div class="info-card glass">
 						<h3>Información Personal</h3>
@@ -113,11 +98,11 @@
 					<p class="unit-summary">Estructura y funcionamiento del computador: componentes, memoria, CPU y lógica digital.</p>
 					<p class="unit-cta">Abrir</p>
 					<div class="rating" role="img" aria-label="Valoración: 5 de 5">
-						<span class="star" data-value="1">★</span>
-						<span class="star" data-value="2">★</span>
-						<span class="star" data-value="3">★</span>
-						<span class="star" data-value="4">★</span>
-						<span class="star" data-value="5">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
 					</div>
 				</article>
 
@@ -126,11 +111,11 @@
 					<p class="unit-summary">Algoritmos, diagramas de flujo y pseudocódigo para diseñar soluciones paso a paso.</p>
 					<p class="unit-cta">Abrir</p>
 					<div class="rating" role="img" aria-label="Valoración: 5 de 5">
-						<span class="star" data-value="1">★</span>
-						<span class="star" data-value="2">★</span>
-						<span class="star" data-value="3">★</span>
-						<span class="star" data-value="4">★</span>
-						<span class="star" data-value="5">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
 					</div>
 				</article>
 
@@ -139,36 +124,13 @@
 					<p class="unit-summary">Programación: lenguajes, operadores y estructuras de control para resolver problemas con código.</p>
 					<p class="unit-cta">Abrir</p>
 					<div class="rating" role="img" aria-label="Valoración: 3.5 de 5">
-						<span class="star" data-value="1">★</span>
-						<span class="star" data-value="2">★</span>
-						<span class="star" data-value="3">★</span>
-						<span class="star" data-value="4">★</span>
-						<span class="star" data-value="5">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star full">★</span>
+						<span class="star half">★</span>
+						<span class="star empty">★</span>
 					</div>
 				</article>
 			</div>
-				<div class="portal-ring" aria-hidden="true"></div>
-				<button id="closePanel" class="close-panel">✕</button>
-				<div class="unit-content">
-					<h3 id="unitTitle">Unidad</h3>
-					<div id="unitBody" class="unit-body">
-						<div class="unit-placeholder">Aquí podrás agregar información más adelante.</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
-		<!-- Contacto / Pie -->
-		<section id="contacto" class="contact container">
-			<h2>Contacto</h2>
-			<p>Desarrollado por</p>
-			<p class="author">Anderson Jhair Vega Latacunga — 2026</p>
-		</section>
-	</main>
-
-	<button id="toTop" class="to-top" title="Volver arriba">↑</button>
-
-	<script src="script.js" defer></script>
-</body>
-</html>
-
+				<div id="unitPanel" class="unit-panel glass">
