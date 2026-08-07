@@ -8,15 +8,6 @@
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
-  // Loader
-  const loader = $('#loader');
-  window.addEventListener('load', ()=>{
-    setTimeout(()=>{
-      loader.style.opacity = '0';
-      setTimeout(()=> loader.style.display='none',600);
-    },600);
-  });
-
   // Smooth scroll for nav links
   const navLinks = $$('.nav-links a');
   function openUnitPanel(unitId){
