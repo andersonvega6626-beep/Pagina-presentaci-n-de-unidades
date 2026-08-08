@@ -70,6 +70,19 @@
   const photoButton = document.getElementById('photoButton');
   const photoPlaceholder = document.querySelector('.photo-placeholder');
 
+  function finalizePhotoUpload(){
+    if(!photoInput) return;
+    photoInput.disabled = true;
+    if(photoButton){
+      photoButton.disabled = true;
+      photoButton.style.display = 'none';
+    }
+    if(photoPlaceholder){
+      photoPlaceholder.classList.add('photo-locked');
+      photoPlaceholder.style.pointerEvents = 'none';
+    }
+  }
+
   function updatePhotoPreview(file){
     if(!file || !photoPreview) return;
     const reader = new FileReader();
@@ -82,12 +95,14 @@
       photoPreview.classList.add('has-photo','has-profile');
       const txt = photoPreview.querySelector('.photo-text');
       if(txt) txt.style.display = 'none';
+      finalizePhotoUpload();
     };
     reader.readAsDataURL(file);
   }
 
   if(photoInput){
     photoInput.addEventListener('change', e=>{
+      if(photoInput.disabled) return;
       const file = e.target.files && e.target.files[0];
       if(file && file.type.startsWith('image/')) {
         updatePhotoPreview(file);
@@ -97,17 +112,22 @@
 
   if(photoButton && photoInput){
     photoButton.addEventListener('click', e=>{
+      if(photoInput.disabled) return;
       e.preventDefault();
       photoInput.click();
     });
   }
 
   if(photoPreview && photoInput){
-    photoPreview.addEventListener('click', ()=> photoInput.click());
+    photoPreview.addEventListener('click', ()=>{
+      if(photoInput.disabled) return;
+      photoInput.click();
+    });
   }
 
   if(photoPlaceholder && photoInput){
     photoPlaceholder.addEventListener('click', e=>{
+      if(photoInput.disabled) return;
       if(e.target === photoInput) return;
       photoInput.click();
     });
